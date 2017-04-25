@@ -72,20 +72,20 @@
 #define HAVE_DEFRAG
 #endif
 
-void *zmalloc(size_t size);
-void *zcalloc(size_t size);
-void *zrealloc(void *ptr, size_t size);
-void zfree(void *ptr);
-char *zstrdup(const char *s);
-size_t zmalloc_used_memory(void);
-void zmalloc_enable_thread_safeness(void);
-void zmalloc_set_oom_handler(void (*oom_handler)(size_t));
-float zmalloc_get_fragmentation_ratio(size_t rss);
-size_t zmalloc_get_rss(void);
-size_t zmalloc_get_private_dirty(long pid);
-size_t zmalloc_get_smap_bytes_by_field(char *field, long pid);
-size_t zmalloc_get_memory_size(void);
-void zlibc_free(void *ptr);
+void *zmalloc(size_t size);	//申请size大小的内存空间
+void *zcalloc(size_t size); 
+void *zrealloc(void *ptr, size_t size); //重分配size大小的内存空间
+void zfree(void *ptr); //释放内存空间
+char *zstrdup(const char *s); //字符串拷贝
+size_t zmalloc_used_memory(void); //获取当前占用的内存空间大小
+void zmalloc_enable_thread_safeness(void); //启用线程安全模式
+void zmalloc_set_oom_handler(void (*oom_handler)(size_t)); //自定义内存溢出处理方法
+float zmalloc_get_fragmentation_ratio(size_t rss); //获取内存占用比率=rss/已使用内存
+size_t zmalloc_get_rss(void); //获取RSS信息
+size_t zmalloc_get_private_dirty(long pid); 
+size_t zmalloc_get_smap_bytes_by_field(char *field, long pid); //获取获取/proc/self/smaps字段的字节数
+size_t zmalloc_get_memory_size(void); // 获取物理内存大小
+void zlibc_free(void *ptr); //原始libc库的free()函数
 
 #ifdef HAVE_DEFRAG
 void zfree_no_tcache(void *ptr);
