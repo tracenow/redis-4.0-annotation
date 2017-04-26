@@ -47,7 +47,7 @@
 //字典hash节点
 typedef struct dictEntry {
     //hash键
-    void *key;//hash值
+    void *key;
     //hash值
     union {
         void *val;
@@ -55,7 +55,7 @@ typedef struct dictEntry {
         int64_t s64;
         double d;
     } v;
-    //下一hash节点
+    //下一hash节点，采用了开链法才解决哈希冲突
     struct dictEntry *next;
 } dictEntry;
 
@@ -83,7 +83,7 @@ typedef struct dictht {
     dictEntry **table;
     //指针数组大小
     unsigned long size;
-    //指针数组掩码
+    //指针数组掩码,用于计算索引值
     unsigned long sizemask;
     //hash表现有节点数
     unsigned long used;
@@ -113,7 +113,7 @@ typedef struct dictIterator {
     dict *d;
     //索引
     long index;
-    //若safe=1，则表示安全迭代器，反之则表示非安全迭代器
+    //table表示主hash表（可进行写操作的ht表），若safe=1，则表示安全迭代器，反之则表示非安全迭代器
     int table, safe;
     //hash表节点,下一hash节点，用于迭代
     dictEntry *entry, *nextEntry;
