@@ -35,7 +35,7 @@
  * Just define the following defines to what you want to use. Also add
  * the include of your alternate allocator if needed (not needed in order
  * to use the default libc allocator). */
-
+//宏定义sds内存malloc/free操作
 #include "zmalloc.h"
 #define s_malloc zmalloc
 #define s_realloc zrealloc
