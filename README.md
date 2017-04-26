@@ -2,7 +2,7 @@ Redis源码阅读轨迹
 =============
 一、基础数据结构
 -------------
-* 内存分配 [zmalloc.h](/src/zmalloc.h)、[zmalloc.c](/src/zmalloc.c)、[sdsalloc.h](/src/sdsalloc.c)
+* 内存分配 [zmalloc.h](/src/zmalloc.h)、[zmalloc.c](/src/zmalloc.c)、[sdsalloc.h](/src/sdsalloc.h)
 * 简单动态字符串 [sds.h](/src/sds.h)和[sds.c](/src/sds.c)
 * 双端链表 [adlist.h](/src/adlist.h)和[adlist.c](/src/adlist.c)
 * 字典 [dict.h](/src/dict.h)和dict.c
