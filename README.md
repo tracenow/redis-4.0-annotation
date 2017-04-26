@@ -1,10 +1,10 @@
 # Redis源码阅读轨迹
 
 ## 一、基础数据结构
-* 内存分配 [zmalloc.h](/src/zmalloc.h)、[zmalloc.c](/src/zmalloc.c)、[sdsalloc.h](/src/sdsalloc.h)
-* 简单动态字符串 [sds.h](/src/sds.h)和[sds.c](/src/sds.c)
-* 双端链表 [adlist.h](/src/adlist.h)和[adlist.c](/src/adlist.c)
-* 字典 [dict.h](/src/dict.h)和dict.c
+* 内存分配 [zmalloc.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/zmalloc.h)、[zmalloc.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/zmalloc.c)、[sdsalloc.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/sdsalloc.h)
+* 简单动态字符串 [sds.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/sds.h)和[sds.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/sds.c)
+* 双端链表 [adlist.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/adlist.h)和[adlist.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/adlist.c)
+* 字典 [dict.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/dict.h)和dict.c
 * 跳跃表 server.h（zskiplist以及zskiplistNode结构）和t_zset.c(zsl开头的函数)
 * 整数集合 intset.h和intset.c
 * 压缩列表 ziplist.h和ziplist.c
@@ -71,7 +71,7 @@
 * 后台线程I/O bio.h和bio.c
 * 延迟类 latency.h和latency.c
 * 排序算法类 pqsort.h和pqsort.c
-* Redis定义的I/O类 rio.h、rio.c、syncio.c
+* Redis定义的I/O类 rio.h、rio.c
 * 同步Socket和文件I/O操作 syncio.c
 
 ## 十、其他
