@@ -4,7 +4,7 @@
 * 内存分配 [zmalloc.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/zmalloc.h)、[zmalloc.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/zmalloc.c)、[sdsalloc.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/sdsalloc.h)
 * 简单动态字符串 [sds.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/sds.h)、[sds.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/sds.c)
 * 双端链表 [adlist.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/adlist.h)、[adlist.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/adlist.c)
-* 字典 [dict.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/dict.h)、dict.c
+* 字典 [dict.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/dict.h)、[dict.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/dict.c)
 * 跳跃表 server.h（zskiplist以及zskiplistNode结构）、t_zset.c(zsl开头的函数)
 * 整数集合 intset.h、intset.c
 * 压缩列表 ziplist.h、ziplist.c
