@@ -31,21 +31,24 @@
 #ifndef __INTSET_H
 #define __INTSET_H
 #include <stdint.h>
-
+//整数集合结构体
 typedef struct intset {
+	//编码格式
     uint32_t encoding;
+    //集合大小
     uint32_t length;
+    //数据部分,并非存储int8_t类型的整数，根据encoding字段决定如何存储
     int8_t contents[];
 } intset;
 
-intset *intsetNew(void);
-intset *intsetAdd(intset *is, int64_t value, uint8_t *success);
-intset *intsetRemove(intset *is, int64_t value, int *success);
-uint8_t intsetFind(intset *is, int64_t value);
-int64_t intsetRandom(intset *is);
-uint8_t intsetGet(intset *is, uint32_t pos, int64_t *value);
-uint32_t intsetLen(const intset *is);
-size_t intsetBlobLen(intset *is);
+intset *intsetNew(void); //创建整数集合
+intset *intsetAdd(intset *is, int64_t value, uint8_t *success);//增加节点
+intset *intsetRemove(intset *is, int64_t value, int *success);//移除节点
+uint8_t intsetFind(intset *is, int64_t value);//查找节点
+int64_t intsetRandom(intset *is);//返回随机的一个节点
+uint8_t intsetGet(intset *is, uint32_t pos, int64_t *value);//获取节点
+uint32_t intsetLen(const intset *is);//获取整数集合大小
+size_t intsetBlobLen(intset *is);//获取整数集合占用的内存大小
 
 #ifdef REDIS_TEST
 int intsetTest(int argc, char *argv[]);

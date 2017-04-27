@@ -37,11 +37,13 @@
 
 /* Note that these encodings are ordered, so:
  * INTSET_ENC_INT16 < INTSET_ENC_INT32 < INTSET_ENC_INT64. */
-#define INTSET_ENC_INT16 (sizeof(int16_t))
-#define INTSET_ENC_INT32 (sizeof(int32_t))
-#define INTSET_ENC_INT64 (sizeof(int64_t))
+ //encoding宏定义, 集合数据编码
+#define INTSET_ENC_INT16 (sizeof(int16_t)) //16位整数
+#define INTSET_ENC_INT32 (sizeof(int32_t)) //32位整数
+#define INTSET_ENC_INT64 (sizeof(int64_t)) //64位整数
 
 /* Return the required encoding for the provided value. */
+ //根据提供的值判断编码格式
 static uint8_t _intsetValueEncoding(int64_t v) {
     if (v < INT32_MIN || v > INT32_MAX)
         return INTSET_ENC_INT64;
@@ -52,6 +54,7 @@ static uint8_t _intsetValueEncoding(int64_t v) {
 }
 
 /* Return the value at pos, given an encoding. */
+//根据给定的编码和索引值，返回对应的值
 static int64_t _intsetGetEncoded(intset *is, int pos, uint8_t enc) {
     int64_t v64;
     int32_t v32;
@@ -73,11 +76,13 @@ static int64_t _intsetGetEncoded(intset *is, int pos, uint8_t enc) {
 }
 
 /* Return the value at pos, using the configured encoding. */
+//同_intsetGetEncoded
 static int64_t _intsetGet(intset *is, int pos) {
     return _intsetGetEncoded(is,pos,intrev32ifbe(is->encoding));
 }
 
 /* Set the value at pos, using the configured encoding. */
+//设置指定位置的值
 static void _intsetSet(intset *is, int pos, int64_t value) {
     uint32_t encoding = intrev32ifbe(is->encoding);
 
@@ -94,14 +99,19 @@ static void _intsetSet(intset *is, int pos, int64_t value) {
 }
 
 /* Create an empty intset. */
+//创建空的整数集合
 intset *intsetNew(void) {
+    //分配内存空间
     intset *is = zmalloc(sizeof(intset));
+    //初始化编码格式
     is->encoding = intrev32ifbe(INTSET_ENC_INT16);
+    //初始化整数集合大小
     is->length = 0;
     return is;
 }
 
 /* Resize the intset */
+//整数集合内存重分配
 static intset *intsetResize(intset *is, uint32_t len) {
     uint32_t size = len*intrev32ifbe(is->encoding);
     is = zrealloc(is,sizeof(intset)+size);
@@ -112,6 +122,7 @@ static intset *intsetResize(intset *is, uint32_t len) {
  * sets "pos" to the position of the value within the intset. Return 0 when
  * the value is not present in the intset and sets "pos" to the position
  * where "value" can be inserted. */
+ //查找整数集合当中value该添加的位置
 static uint8_t intsetSearch(intset *is, int64_t value, uint32_t *pos) {
     int min = 0, max = intrev32ifbe(is->length)-1, mid = -1;
     int64_t cur = -1;
