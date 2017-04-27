@@ -6,7 +6,7 @@
 * 双端链表 [adlist.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/adlist.h)、[adlist.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/adlist.c)
 * 字典 [dict.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/dict.h)、[dict.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/dict.c)
 * 跳跃表 [server.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/server.h)（zskiplist以及zskiplistNode结构）、[t_zset.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/t_zset.c)(zsl开头的函数)
-* 整数集合 intset.h、intset.c
+* 整数集合 [intset.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/intset.h)、[intset.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/intset.c)
 * 压缩列表 ziplist.h、ziplist.c
 * 压缩字典 zipmap.h、zipmap.c
 * 快速链表 quicklist.h、quicklist.c
