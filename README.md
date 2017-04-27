@@ -1,4 +1,4 @@
-# Redis源码阅读轨迹
+# Redis源码阅读列表
 
 ## 一、基础数据结构
 * 内存分配 [zmalloc.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/zmalloc.h)、[zmalloc.c](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/zmalloc.c)、[sdsalloc.h](https://github.com/tracenow/redis-4.0-annotation/blob/master/src/sdsalloc.h)
