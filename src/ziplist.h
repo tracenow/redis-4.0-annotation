@@ -34,8 +34,8 @@
 #define ZIPLIST_HEAD 0
 #define ZIPLIST_TAIL 1
 
-unsigned char *ziplistNew(void);
-unsigned char *ziplistMerge(unsigned char **first, unsigned char **second);
+unsigned char *ziplistNew(void); //创建压缩列表
+unsigned char *ziplistMerge(unsigned char **first, unsigned char **second); //压缩列表合并
 unsigned char *ziplistPush(unsigned char *zl, unsigned char *s, unsigned int slen, int where);
 unsigned char *ziplistIndex(unsigned char *zl, int index);
 unsigned char *ziplistNext(unsigned char *zl, unsigned char *p);

@@ -190,6 +190,7 @@
 #include "endianconv.h"
 #include "redisassert.h"
 
+//压缩列表结尾标识
 #define ZIP_END 255         /* Special "end of ziplist" entry. */
 #define ZIP_BIG_PREVLEN 254 /* Max number of bytes of the previous entry, for
                                the "prevlen" field prefixing each entry, to be
@@ -199,16 +200,17 @@
                                representing the previous entry len. */
 
 /* Different encoding/length possibilities */
-#define ZIP_STR_MASK 0xc0
-#define ZIP_INT_MASK 0x30
+#define ZIP_STR_MASK 0xc0 //字符串掩码
+#define ZIP_INT_MASK 0x30 //整数掩码
+//定义不同的编码
 #define ZIP_STR_06B (0 << 6)
 #define ZIP_STR_14B (1 << 6)
 #define ZIP_STR_32B (2 << 6)
-#define ZIP_INT_16B (0xc0 | 0<<4)
-#define ZIP_INT_32B (0xc0 | 1<<4)
-#define ZIP_INT_64B (0xc0 | 2<<4)
-#define ZIP_INT_24B (0xc0 | 3<<4)
-#define ZIP_INT_8B 0xfe
+#define ZIP_INT_16B (0xc0 | 0<<4) 
+#define ZIP_INT_32B (0xc0 | 1<<4) 
+#define ZIP_INT_64B (0xc0 | 2<<4) 
+#define ZIP_INT_24B (0xc0 | 3<<4) 
+#define ZIP_INT_8B 0xfe 
 
 /* 4 bit integer immediate encoding |1111xxxx| with xxxx between
  * 0001 and 1101. */
@@ -222,19 +224,19 @@
 
 /* Macro to determine if the entry is a string. String entries never start
  * with "11" as most significant bits of the first byte. */
-#define ZIP_IS_STR(enc) (((enc) & ZIP_STR_MASK) < ZIP_STR_MASK)
+#define ZIP_IS_STR(enc) (((enc) & ZIP_STR_MASK) < ZIP_STR_MASK) //判断是否为字符串编码
 
 /* Utility macros.*/
 
 /* Return total bytes a ziplist is composed of. */
-#define ZIPLIST_BYTES(zl)       (*((uint32_t*)(zl)))
+#define ZIPLIST_BYTES(zl)       (*((uint32_t*)(zl))) //压缩列表占用字节数
 
 /* Return the offset of the last item inside the ziplist. */
-#define ZIPLIST_TAIL_OFFSET(zl) (*((uint32_t*)((zl)+sizeof(uint32_t))))
+#define ZIPLIST_TAIL_OFFSET(zl) (*((uint32_t*)((zl)+sizeof(uint32_t)))) //压缩列表最后一项偏移
 
 /* Return the length of a ziplist, or UINT16_MAX if the length cannot be
  * determined without scanning the whole ziplist. */
-#define ZIPLIST_LENGTH(zl)      (*((uint16_t*)((zl)+sizeof(uint32_t)*2)))
+#define ZIPLIST_LENGTH(zl)      (*((uint16_t*)((zl)+sizeof(uint32_t)*2))) //压缩列表长度
 
 /* The size of a ziplist header: two 32 bit integers for the total
  * bytes count and last item offset. One 16 bit integer for the number
