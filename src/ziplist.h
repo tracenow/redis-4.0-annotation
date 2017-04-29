@@ -36,19 +36,19 @@
 
 unsigned char *ziplistNew(void); //创建压缩列表
 unsigned char *ziplistMerge(unsigned char **first, unsigned char **second); //压缩列表合并
-unsigned char *ziplistPush(unsigned char *zl, unsigned char *s, unsigned int slen, int where);
-unsigned char *ziplistIndex(unsigned char *zl, int index);
-unsigned char *ziplistNext(unsigned char *zl, unsigned char *p);
-unsigned char *ziplistPrev(unsigned char *zl, unsigned char *p);
+unsigned char *ziplistPush(unsigned char *zl, unsigned char *s, unsigned int slen, int where); //从头部或者尾部插入新节点
+unsigned char *ziplistIndex(unsigned char *zl, int index); //返回位置为index的节点
+unsigned char *ziplistNext(unsigned char *zl, unsigned char *p); //返回前向节点
+unsigned char *ziplistPrev(unsigned char *zl, unsigned char *p); //返回后向节点
 unsigned int ziplistGet(unsigned char *p, unsigned char **sval, unsigned int *slen, long long *lval);
-unsigned char *ziplistInsert(unsigned char *zl, unsigned char *p, unsigned char *s, unsigned int slen);
-unsigned char *ziplistDelete(unsigned char *zl, unsigned char **p);
-unsigned char *ziplistDeleteRange(unsigned char *zl, int index, unsigned int num);
+unsigned char *ziplistInsert(unsigned char *zl, unsigned char *p, unsigned char *s, unsigned int slen); //插入新节点
+unsigned char *ziplistDelete(unsigned char *zl, unsigned char **p); //删除节点
+unsigned char *ziplistDeleteRange(unsigned char *zl, int index, unsigned int num); //范围删除，从位置为index开始的num个节点删除
 unsigned int ziplistCompare(unsigned char *p, unsigned char *s, unsigned int slen);
-unsigned char *ziplistFind(unsigned char *p, unsigned char *vstr, unsigned int vlen, unsigned int skip);
-unsigned int ziplistLen(unsigned char *zl);
-size_t ziplistBlobLen(unsigned char *zl);
-void ziplistRepr(unsigned char *zl);
+unsigned char *ziplistFind(unsigned char *p, unsigned char *vstr, unsigned int vlen, unsigned int skip); //
+unsigned int ziplistLen(unsigned char *zl); //压缩列表节点数
+size_t ziplistBlobLen(unsigned char *zl); //压缩列表占用空间大小
+void ziplistRepr(unsigned char *zl); 
 
 #ifdef REDIS_TEST
 int ziplistTest(int argc, char *argv[]);
